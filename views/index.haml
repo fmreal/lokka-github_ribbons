@@ -1,0 +1,22 @@
+%h2 GitHub Ribbons
+%p Input your GitHub ID and choose a favorite GutHub ribbon.
+%form{:action => '/admin/plugins/github_ribbons', :method => 'post', :name => "pluginfrom"}
+  %input{:type => 'hidden', :name => '_method', :value => 'put'}
+  %input{:type => 'hidden', :name => 'ribbon', :id => 'ribbon', :value => Option.ribbon}
+  .field
+    %label{:for => 'githubid'} Your GitHub ID
+    %br
+    %input{:type => 'text', :id => 'githubid', :name => 'githubid', :value => Option.githubid}
+  -@ribbons.each do |ribbonid, src|
+    %a{:href => "javascript:void(0)"}
+      %img{:id => ribbonid, :style => "margin: 0; padding: 0;", :src => ("https://a248.e.akamai.net/assets.github.com/img/" + src), :alt => "Fork me on GitHub", :class => "ghrebbon"}
+
+  .field
+    %input{:type => 'submit', :value => t('edit')}
+ 
+:javascript
+  $('.ghrebbon').click(function(){
+    pluginfrom.ribbon.value = this.id;
+    $('.ghrebbon').css("border", "none");
+    $(this).css("border", "3px solid #182B5A");
+  });
