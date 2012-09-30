@@ -9,7 +9,7 @@
     %input{:type => 'text', :id => 'githubid', :name => 'githubid', :value => Option.githubid}
   -@ribbons.each do |ribbonid, src|
     %a{:href => "javascript:void(0)"}
-      %img{:id => ribbonid, :style => "margin: 0; padding: 0;", :src => ("https://a248.e.akamai.net/assets.github.com/img/" + src), :alt => "Fork me on GitHub", :class => "ghrebbon"}
+      %img{:id => ribbonid, :style => "margin: 0; padding: 0;", :src => ("https://s3.amazonaws.com/github/ribbons/forkme_" + src + ".png"), :alt => "Fork me on GitHub", :class => "ghrebbon"}
 
   .field
     %input{:type => 'submit', :value => t('edit')}
